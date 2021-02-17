@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Final - Cliente</title>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+   <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+
+  <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyBOu5KQ2yRr5r3zbwDOosAQv33O_QO0V_o",
+        authDomain: "dbcliente-5eb42.firebaseapp.com",
+        databaseURL: "https://dbcliente-5eb42.firebaseio.com",
+        projectId: "dbcliente-5eb42",
+        storageBucket: "dbcliente-5eb42.appspot.com",
+        messagingSenderId: "121191342998",
+        appId: "1:121191342998:web:c5ea6e83834973cb90f3b7"
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+  </script>
+
+
+
+
+    <link rel="stylesheet" href="Projetostyle.css">
+
+</head>
+<!--CSS only-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<script src="CadastrarCliente.js"></script> 
+
+<body>
+
+
+  <!--NavBar-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand h1" href="index.html">LDR BURGUER</a>
+      <button class="navbar-toggler" type="button" onclick="" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="cliente.html">Cliente <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Relatório do Dia</a>
+          </li>
+          
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="procurar" placeholder="O que deseja pedir?" aria-label="Search">
+          <button class="btn btn-secondary" onclick="Fake()" type="submit">Buscar</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  
+   
+  
+
+
+      <!--Form-->
+      <div id="corpo">
+        <div class="container">
+          <div class="row">
+              <div class="col-12 my-5">
+                <form id="IdForm" style="width: 500px; margin: auto;">
+                  <h3 class="text-center">Novo pedido</h3>
+                  <div class="was-validated" class="form-group" >
+                    <label for="IdCodigo">Codigo</label>
+                    <input class="form-control is-invalid" type="text" class="form-control" id="IdCodigo" placeholder="1.." required>
+                  </div><br>
+                    <div class="was-validated" class="form-group" >
+                      <label for="IdNome">Nome</label>
+                      <input class="form-control is-invalid" type="text" class="form-control" id="IdNome" placeholder="EX. Luiz Danilo" required>
+                    </div><br>
+                    <div class="was-validated" class="form-group">
+                      <label for="IdTelefone">Telefone</label>
+                      <input class="form-control is-invalid" type="text" class="form-control" id="IdTelefone" placeholder="(15)9845-8223 " required>
+                    </div><br>
+                    <div class="was-validated" class="form-group" >
+                      <label for="IdEndereco">Endereço</label>
+                      <input class="form-control is-invalid" type="text" class="form-control" id="IdEndereco" placeholder="Ex. Rua.. Nº" required>
+                    </div><br>
+                    <div class="was-validated" class="form-group">
+                      <label for="IdCidade">Cidade</label>
+                      <input class="form-control is-invalid" type="text" class="form-control" id="IdCidade" placeholder="Sorocaba.." required>
+                    </div><br>
+
+
+                    <div class="form-group">
+                      <label for="IdLanche">Lanche</label>
+                      <select class="form-control" name="Nomelanche" id="IdLanche">
+                        <option value="25.0">SMASH EGG R$ 25,00</option>
+                        <option value="22.0">SMASH BACON R$ 22,00</option>
+                        <option value="15.0">SMASH SALAD R$ 15,00</option>
+                        <option value="19.0">GOLD R$ 19,00</option>
+                        <option value="25.0">ONION R$ 25,00</option>
+                        <option value="20.0">SEVEN R$ 20,00</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="IdBebidas">Bebidas</label>
+                      <select class="form-control" name="Nomebebidas" id="IdBebidas">
+                        <option value="8.0">LARANJA R$ 8,00</option>
+                        <option value="7.0">FRUTAS VERMELHAS R$ 7,00</option>
+                        <option value="10.0">LIMÃO AO LEITE R$ 10,00</option>
+                      </select>
+                    </div>
+                    <label for="">Que tal Turbinar seu Burger?</label>
+                    <div class="custom-control custom-checkbox">
+                      <input  type="checkbox" class="custom-control-input"  name="turbinar" value="5.0" id="IdBancon">
+                      <label class="custom-control-label" for="IdBancon">Bacon + R$ 5,00</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" name="turbinar" value="3.0" id="idQP">
+                      <label class="custom-control-label" for="idQP">Queijo Prato + R$ 3,00</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" name="turbinar" value="3.0" id="IdQC">
+                      <label class="custom-control-label" for="IdQC">Queijo Cheddar + R$ 3,00</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" name="turbinar" value="2.0" id="Idbbq">
+                      <label class="custom-control-label" for="Idbbq">Molho BBQ + R$ 2,00</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" name="turbinar" value="4.0" id="Idcatupiry">
+                      <label class="custom-control-label" for="Idcatupiry">Catupiry + R$ 4,00</label>
+                    </div><br>
+                    <div class="form-group">
+                      <label for="IdObs">Alguma observação?</label>
+                      <textarea class="form-control" id="IdObs" rows="3"></textarea>
+                    </div>
+
+                    <!--div class="form-group">
+                      <label for="IdEndereco">Lanche</label>
+                      <input type="text" class="form-control" id="IdEndereco" placeholder="">
+                    </div>-->
+                    <button type="button" id="BtnCadastrar" class="btn btn-primary" onclick=" Cadastrar()" class="btn btn-dark">Confirmar</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+    </div>
+
+   
+    <div id="IdCard-Cliente">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 my-5">
+            <div  class="card text-white bg-dark mb-3">
+              <h3 class="text-center">Cadastro de pedidos</h3>
+            <table id="IdtabelaCliente" style="width: 900px; margin: auto;"class="table table-hover table-dark">
+                <tr>
+                  <th scope="col">Codigo</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Telefone</th>
+                  <th scope="col">Endereço</th>
+                  <th scope="col">Cidade</th>
+                  <th scope="col">Opção</th>
+                </tr>
+            </table>
+             </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  
+      
+
+      <!--Footer-->
+      <footer class="bg-dark mb-3">
+          <div id="copy-area">
+            <div class="container">
+            <div class="row">
+              <div class="col-12 my-5">
+                <div class="card text-white bg-dark mb-3">
+                  
+                  <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                      <p> 
+                      <footer class="blockquote-footer">Desenvolvido por <cite title="Source Title"> Luiz Danilo &copy;2020</cite></footer>
+                    </blockquote>
+                  </div>
+                </div>
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+
+</body>
+</html>
